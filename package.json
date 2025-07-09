@@ -1,0 +1,153 @@
+{
+  "name": "comment-wizard",
+  "displayName": "Comment Wizard",
+  "description": "Colorful comments for better code organization with advanced customization",
+  "version": "1.0.0",
+  "engines": {
+    "vscode": "^1.101.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onLanguage:javascript",
+    "onLanguage:typescript",
+    "onLanguage:python",
+    "onLanguage:java",
+    "onLanguage:c",
+    "onLanguage:cpp",
+    "onLanguage:csharp",
+    "onLanguage:html",
+    "onLanguage:css",
+    "onLanguage:sql",
+    "onLanguage:php",
+    "onLanguage:ruby",
+    "onLanguage:go",
+    "onLanguage:rust",
+    "onLanguage:kotlin",
+    "onLanguage:swift",
+    "onLanguage:xml",
+    "onLanguage:yaml",
+    "onLanguage:json",
+    "onLanguage:markdown"
+  ],
+  "main": "./extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "commentWizard.addKeyword",
+        "title": "Add Custom Keyword",
+        "category": "Comment Wizard"
+      },
+      {
+        "command": "commentWizard.removeKeyword",
+        "title": "Remove Keyword",
+        "category": "Comment Wizard"
+      },
+      {
+        "command": "commentWizard.exportTheme",
+        "title": "Export Theme",
+        "category": "Comment Wizard"
+      },
+      {
+        "command": "commentWizard.importTheme",
+        "title": "Import Theme",
+        "category": "Comment Wizard"
+      },
+      {
+        "command": "commentWizard.resetToDefault",
+        "title": "Reset to Default",
+        "category": "Comment Wizard"
+      }
+    ],
+    "configuration": {
+      "type": "object",
+      "title": "Comment Wizard",
+      "properties": {
+        "commentWizard.enabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable Comment Wizard"
+        },
+        "commentWizard.keywords": {
+          "type": "object",
+          "default": {
+            "TODO": "#00BFFF",
+            "FIXME": "#FF4500",
+            "NOTE": "#32CD32",
+            "WARNING": "#FFD700",
+            "HACK": "#9932CC",
+            "BUG": "#FF0000",
+            "REVIEW": "#FF69B4",
+            "DEPRECATED": "#808080"
+          },
+          "description": "Keywords and their colors"
+        },
+        "commentWizard.customKeywords": {
+          "type": "object",
+          "default": {},
+          "description": "User-defined custom keywords"
+        },
+        "commentWizard.caseSensitive": {
+          "type": "boolean",
+          "default": false,
+          "description": "Make keyword matching case sensitive"
+        },
+        "commentWizard.highlightStyle": {
+          "type": "string",
+          "enum": ["text", "background", "border", "underline"],
+          "default": "text",
+          "description": "Highlight style: text color, background, border, or underline"
+        },
+        "commentWizard.fontWeight": {
+          "type": "string",
+          "enum": ["normal", "bold", "bolder"],
+          "default": "bold",
+          "description": "Font weight for highlighted keywords"
+        },
+        "commentWizard.showIcons": {
+          "type": "boolean",
+          "default": false,
+          "description": "Show icons before keywords"
+        },
+        "commentWizard.regexPatterns": {
+          "type": "array",
+          "default": [],
+          "description": "Custom regex patterns for advanced users"
+        },
+        "commentWizard.excludeFromEnd": {
+          "type": "boolean",
+          "default": true,
+          "description": "Exclude keywords from end of line comments"
+        },
+        "commentWizard.minKeywordLength": {
+          "type": "number",
+          "default": 2,
+          "minimum": 1,
+          "maximum": 20,
+          "description": "Minimum length for keywords"
+        },
+        "commentWizard.maxKeywords": {
+          "type": "number",
+          "default": 50,
+          "minimum": 1,
+          "maximum": 100,
+          "description": "Maximum number of keywords allowed"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "pretest": "npm run lint",
+    "test": "vscode-test"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.101.0",
+    "@types/mocha": "^10.0.10",
+    "@types/node": "20.x",
+    "eslint": "^9.25.1",
+    "@vscode/test-cli": "^0.0.11",
+    "@vscode/test-electron": "^2.5.2"
+  }
+}
