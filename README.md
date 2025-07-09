@@ -39,7 +39,7 @@ Users appreciate release notes as you update your extension.
 
 Initial release of ...
 
-### 1.0.1
+### 1.0.1u
 
 Fixed issue #.
 
